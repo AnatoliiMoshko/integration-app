@@ -1,5 +1,8 @@
 package com.example.service.integrationapp.clients;
 
+import com.example.service.integrationapp.model.EntityModel;
+import com.example.service.integrationapp.model.UpsertEntityRequest;
+import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;
@@ -10,6 +13,9 @@ import org.springframework.core.io.ByteArrayResource;
 import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
+
+import java.util.List;
+import java.util.UUID;
 
 @Component
 @RequiredArgsConstructor
@@ -47,7 +53,7 @@ public class OkhttpClientSender {
 
     public Resource downloadFile(String filename) {
         Request request = new Request.Builder()
-                .url(baseUrl + "/api/v1/file/download" + filename)
+                .url(baseUrl + "/api/v1/file/download/" + filename)
                 .header("Accept", "application/octet-stream")
                 .get()
                 .build();
@@ -63,6 +69,76 @@ public class OkhttpClientSender {
         } catch (Exception ex) {
             ex.printStackTrace();
             return null;
+        }
+    }
+
+    public List<EntityModel> getEntityList() {
+        Request request = new Request.Builder()
+                .url(baseUrl + "/api/v1/entity")
+                .build();
+
+        return processResponses(request, new TypeReference<>(){});
+    }
+
+    public EntityModel getEntityByName(String name) {
+        Request request = new Request.Builder()
+                .url(baseUrl + "/api/v1/entity/" + name)
+                .build();
+
+        return processResponses(request, new TypeReference<>(){});
+    }
+
+    @SneakyThrows
+    public EntityModel createEntity(UpsertEntityRequest request) {
+        MediaType JSON = MediaType.get("application/json;charset=utf-8");
+        String requestBody = objectMapper.writeValueAsString(request);
+        RequestBody body = RequestBody.create(requestBody, JSON);
+
+        Request httprequest = new Request.Builder()
+                .url(baseUrl + "/api/v1/entity")
+                .post(body)
+                .build();
+
+        return processResponses(httprequest, new TypeReference<>(){});
+    }
+
+    @SneakyThrows
+    public EntityModel updateEntity(UUID id, UpsertEntityRequest request) {
+        MediaType JSON = MediaType.get("application/json;charset=utf-8");
+        String requestBody = objectMapper.writeValueAsString(request);
+        RequestBody body = RequestBody.create(requestBody, JSON);
+
+        Request httprequest = new Request.Builder()
+                .url(baseUrl + "/api/v1/entity/" + id)
+                .put(body)
+                .build();
+
+        return processResponses(httprequest, new TypeReference<>(){});
+    }
+
+    @SneakyThrows
+    public void deleteEntityById(UUID id) {
+        Request request = new Request.Builder()
+                .url(baseUrl + "/api/v1/entity/" + id)
+                .delete()
+                .build();
+        try (Response response = httpClient.newCall(request).execute()) {
+            if (!response.isSuccessful()) throw new RuntimeException("Unexpected response code: " + response);
+        }
+    }
+
+    @SneakyThrows
+    private <T> T processResponses(Request request, TypeReference<T> typeReference) {
+        try (Response response = httpClient.newCall(request).execute()) {
+            if (!response.isSuccessful()) throw new RuntimeException("Unexpected response code: " + response);
+
+            ResponseBody responseBody = response.body();
+            if (responseBody != null) {
+                String stringBody = responseBody.string();
+                return objectMapper.readValue(stringBody, typeReference);
+            } else {
+                throw new RuntimeException("Response body is empty!");
+            }
         }
     }
 }
