@@ -1,6 +1,7 @@
 package com.example.service.integrationapp.controller;
 
 import com.example.service.integrationapp.clients.OkhttpClientSender;
+import com.example.service.integrationapp.clients.RestTemplateClient;
 import com.example.service.integrationapp.model.EntityModel;
 import com.example.service.integrationapp.model.UpsertEntityRequest;
 import lombok.RequiredArgsConstructor;
@@ -16,7 +17,7 @@ import java.util.UUID;
 @RequiredArgsConstructor
 public class EntityClientController {
 
-    private final OkhttpClientSender client;
+    private final RestTemplateClient client;
 
     @GetMapping
     public ResponseEntity<List<EntityModel>> entityList() {

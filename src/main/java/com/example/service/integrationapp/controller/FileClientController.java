@@ -1,6 +1,7 @@
 package com.example.service.integrationapp.controller;
 
 import com.example.service.integrationapp.clients.OkhttpClientSender;
+import com.example.service.integrationapp.clients.RestTemplateClient;
 import lombok.RequiredArgsConstructor;
 import org.springframework.core.io.Resource;
 import org.springframework.http.HttpHeaders;
@@ -14,7 +15,7 @@ import org.springframework.web.multipart.MultipartFile;
 @RequiredArgsConstructor
 public class FileClientController {
 
-    private OkhttpClientSender client;
+    private RestTemplateClient client;
 
     @PostMapping("/upload")
     public ResponseEntity<String> uploadFile(@RequestPart MultipartFile file) {
