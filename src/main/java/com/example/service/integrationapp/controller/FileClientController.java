@@ -1,6 +1,5 @@
 package com.example.service.integrationapp.controller;
 
-import com.example.service.integrationapp.clients.OkhttpClientSender;
 import com.example.service.integrationapp.clients.RestTemplateClient;
 import lombok.RequiredArgsConstructor;
 import org.springframework.core.io.Resource;

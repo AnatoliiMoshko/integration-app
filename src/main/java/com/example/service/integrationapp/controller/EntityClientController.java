@@ -1,6 +1,5 @@
 package com.example.service.integrationapp.controller;
 
-import com.example.service.integrationapp.clients.OkhttpClientSender;
 import com.example.service.integrationapp.clients.RestTemplateClient;
 import com.example.service.integrationapp.model.EntityModel;
 import com.example.service.integrationapp.model.UpsertEntityRequest;

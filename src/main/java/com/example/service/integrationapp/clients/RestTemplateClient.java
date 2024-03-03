@@ -2,6 +2,7 @@ package com.example.service.integrationapp.clients;
 
 import com.example.service.integrationapp.model.EntityModel;
 import com.example.service.integrationapp.model.UpsertEntityRequest;
+import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.ParameterizedTypeReference;
@@ -19,6 +20,7 @@ import java.util.UUID;
 
 @Component
 @RequiredArgsConstructor
+@AllArgsConstructor
 public class RestTemplateClient {
 
     private final RestTemplate restTemplate;

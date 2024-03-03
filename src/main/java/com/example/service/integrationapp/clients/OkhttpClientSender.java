@@ -4,6 +4,7 @@ import com.example.service.integrationapp.model.EntityModel;
 import com.example.service.integrationapp.model.UpsertEntityRequest;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
@@ -19,6 +20,7 @@ import java.util.UUID;
 
 @Component
 @RequiredArgsConstructor
+@AllArgsConstructor
 @Slf4j
 public class OkhttpClientSender {
 
