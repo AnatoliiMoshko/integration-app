@@ -1,2 +1,9 @@
-package com.example.service.integrationapp.repository;public class DatabaseEntityRepository {
+package com.example.service.integrationapp.repository;
+
+import com.example.service.integrationapp.entity.DatabaseEntity;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import java.util.UUID;
+
+public interface DatabaseEntityRepository extends JpaRepository<DatabaseEntity, UUID> {
 }
