@@ -27,6 +27,7 @@ public class AppCacheProperties {
     }
 
     public enum CacheType {
-        IN_MEMORY
+        IN_MEMORY,
+        REDIS
     }
 }
