@@ -28,8 +28,10 @@ dependencies {
 	implementation("org.springframework.cloud:spring-cloud-starter-openfeign")
 	implementation("org.springframework.boot:spring-boot-starter-webflux")
 	implementation("org.springframework.boot:spring-boot-starter-data-jpa")
+	implementation("org.springframework.boot:spring-boot-starter-data-redis")
 	implementation("org.springframework.boot:spring-boot-starter-cache")
 	implementation("com.google.guava:guava:32.1.1-jre")
+	implementation("io.lettuce:lettuce-core")
 	runtimeOnly("org.postgresql:postgresql")
 	implementation("com.squareup.okhttp3:okhttp:4.11.0")
 
