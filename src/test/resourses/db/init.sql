@@ -1,3 +1,3 @@
-INSERT INTO entities(id, name, date) VALUES('586da269-29fd-4223-bafb-40bcf930d700', 'testName_1', '2100-01-01 00:00:00.782169 +00:00')
-INSERT INTO entities(id, name, date) VALUES('586da269-29fd-4223-bafb-40bcf930d701', 'testName_2', '2100-01-01 00:00:00.782169 +00:00')
-INSERT INTO entities(id, name, date) VALUES('586da269-29fd-4223-bafb-40bcf930d702', 'testName_3', '2100-01-01 00:00:00.782169 +00:00')
+INSERT INTO entities(id, name, date) VALUES('586da269-29fd-4223-bafb-40bcf930d700', 'testName_1', '2100-01-01 00:00:00.782169 +00:00');
+INSERT INTO entities(id, name, date) VALUES('586da269-29fd-4223-bafb-40bcf930d701', 'testName_2', '2100-01-01 00:00:00.782169 +00:00');
+INSERT INTO entities(id, name, date) VALUES('586da269-29fd-4223-bafb-40bcf930d702', 'testName_3', '2100-01-01 00:00:00.782169 +00:00');

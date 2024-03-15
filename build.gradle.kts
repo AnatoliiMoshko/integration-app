@@ -43,7 +43,7 @@ dependencies {
 	testImplementation("org.testcontainers:junit-jupiter:1.17.6")
 	testImplementation("org.testcontainers:postgresql:1.17.6")
 	testImplementation("com.github.tomakehurst:wiremock-jre8-standalone:2.35.0")
-	testImplementation("net.javascrumbs.json-unit:json-unit:2.38.0")
+	testImplementation("net.javacrumbs.json-unit:json-unit:2.38.0")
 }
 
 dependencyManagement {

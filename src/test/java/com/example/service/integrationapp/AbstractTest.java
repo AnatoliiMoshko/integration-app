@@ -22,8 +22,9 @@ import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.transaction.annotation.Transactional;
 import org.testcontainers.containers.PostgreSQLContainer;
+import org.testcontainers.junit.jupiter.Container;
 import org.testcontainers.junit.jupiter.Testcontainers;
-import org.testcontainers.shaded.com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.testcontainers.utility.DockerImageName;
 
 import java.time.Instant;
@@ -67,6 +68,8 @@ public class AbstractTest {
             .build();
 
     protected static PostgreSQLContainer postgreSQLContainer;
+
+    @Container
     protected static final RedisContainer REDIS_CONTAINER =
             new RedisContainer(DockerImageName.parse("redis:7.0.12"))
                     .withExposedPorts(6379)
